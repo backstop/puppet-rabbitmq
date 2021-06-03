@@ -43,6 +43,7 @@ class Puppet::Provider::RabbitmqCli < Puppet::Provider
   end
 
   def self.rabbitmqctl_list(resource, *opts)
+    version = rabbitmq_version
     list_opts =
       if version && Puppet::Util::Package.versioncmp(version, '3.7.9') >= 0
         ['-q', '--no-table-headers']
